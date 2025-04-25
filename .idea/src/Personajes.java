@@ -32,4 +32,7 @@ abstract class Personajes {
     public int hashCode(){
         return nombre.hashCode();
     }
+
+    
+
 }
