@@ -27,12 +27,42 @@ abstract class Personajes {
     }
 
 
-    //MIRAR ESTO Y HACER HASHCODE PARA EL ID Y QUE UN ID NO SE REPITA
+    //cambiar por objects.hash
     @Override
     public int hashCode(){
         return nombre.hashCode();
     }
 
+
+
+}
+
+abstract class combateFisico extends Personajes {
+    combateFisico(int id, String nombre, int nivel, int salud) {
+        super(id, nombre, nivel, salud);
+    }
+
+    void fisico(){
+        System.out.println(nombre+" se prepara físicamente.");
+    }
+
+    @Override
+    abstract void atacar();
+
+}
+
+class Guerrero extends combateFisico {
+    Guerrero(int id, String nombre, int nivel, int salud) {
+        super(id, nombre, nivel, salud);
+    }
     
 
+    void cargarAtaque(){}
+
+    /* 
+    @Override
+    void atacar() {
+        System.out.println(nombre + " ataca con su espada.");
+    }
+        */
 }
