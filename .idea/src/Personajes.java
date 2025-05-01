@@ -64,7 +64,7 @@ abstract class combateMagico extends Personajes{
     }
 
     void mana(){
-        System.out.println(nombre + "Cuenta con Maná");
+        System.out.println(nombre + " cuenta con Maná");
     }
 
     @Override
@@ -73,7 +73,9 @@ abstract class combateMagico extends Personajes{
 
 }
 
-class Guerrero extends combateFisico /*interfaz defendible*/ {
+
+
+class Guerrero extends combateFisico implements defendedible{
     int fuerza;
     int armadura;
     int escudo;
@@ -93,13 +95,14 @@ class Guerrero extends combateFisico /*interfaz defendible*/ {
         System.out.println(nombre + " carga su ataque.");
     }
 
-    void defender(){
+    @Override
+    public void defender(){
         System.out.println(nombre + " se defiende.");
     }
 
 }
 
-class Mago extends combateMagico {
+class Mago extends combateMagico implements magico{
     int mana;
     int sabiduria;
     Mago(int id, String nombre, int nivel, int salud, int mana, int sabiduria) {
@@ -113,7 +116,8 @@ class Mago extends combateMagico {
         System.out.println(nombre + " ataca.");
     }
 
-    void lanzarHechizo(){
+    @Override
+    public void lanzarHechizo(){
         System.out.println(nombre + " lanza un hechizo.");
     }
 
@@ -122,7 +126,7 @@ class Mago extends combateMagico {
     }
 }
 
-class Arquero extends combateFisico{
+class Arquero extends combateFisico implements movilizable{
     int agilidad;
     int numFlechas;
     Arquero(int id, String nombre, int nivel, int salud, int agilidad, int numFlechas) {
@@ -136,6 +140,11 @@ class Arquero extends combateFisico{
         System.out.println(nombre + " ataca.");
     }
 
+    @Override
+    public void moverse(){
+        System.out.println(nombre + " se mueve.");
+    }
+
     void dispararFlecha(){
         System.out.println(nombre + " dispara una flecha.");
     }
@@ -143,5 +152,26 @@ class Arquero extends combateFisico{
     void reabastecerFlechas(){
         System.out.println(nombre + " reabastece flechas.");
     }   
+}
+
+
+interface volador{
+    void volar();
+}
+
+interface curable{
+    void curar();
+}
+
+interface defendedible{
+    void defender();
+}
+
+interface magico{
+    void lanzarHechizo();
+}
+
+interface movilizable{
+    void moverse();
 }
 
