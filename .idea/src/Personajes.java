@@ -30,6 +30,18 @@ abstract class Personajes {
         return id==other.id &&nombre.equals(other.nombre) &&nivel == other.nivel &&salud==other.salud;
     }
 
+    //interfaces:
+    interface volador{
+        void volar();
+    }
+
+    interface curar{
+        void curacion();
+    }
+
+    interface defendedible{
+        void defender();
+    }
 
     //MIRAR ESTO Y HACER HASHCODE PARA EL ID Y QUE UN ID NO SE REPITA
     @Override
@@ -37,7 +49,7 @@ abstract class Personajes {
         return nombre.hashCode();
     }
 
-    class combateMagico extends Personajes{
+     class combateMagico extends Personajes{
         combateMagico(int id, String nombre, int nivel, int salud) {
             super(id, nombre, nivel, salud);
         }
@@ -52,11 +64,7 @@ abstract class Personajes {
         }
 
         @Override
-        void atacar() {
-            System.out.println(nombre + " ataca");
-        }
-
-
+        abstract void atacar();
     }
 
     class hechizero extends combateMagico implements defendedible{
@@ -71,9 +79,7 @@ abstract class Personajes {
         }
 
         @Override
-        void atacar() {
-            System.out.println(nombre + " ataca");
-        }
+        abstract void atacar();
 
         @Override
         public void defender() {
@@ -94,9 +100,7 @@ abstract class Personajes {
         }
 
         @Override
-        void atacar() {
-
-        }
+        abstract void atacar();
 
         @Override
         public void curacion(){
@@ -104,16 +108,5 @@ abstract class Personajes {
         }
     }
 
-    //interfaces:
-    interface volador{
-        void volar();
-    }
 
-    interface curar{
-        void curacion();
-    }
-
-    interface defendedible{
-        void defender();
-    }
 }
